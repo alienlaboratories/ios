@@ -124,12 +124,14 @@ class QueryModel {
         var delta: Int64 = 500 * Int64(NSEC_PER_MSEC)
         var time = dispatch_time(DISPATCH_TIME_NOW, delta)
 
+        NSLog("Query...")
         dispatch_after(time, dispatch_get_main_queue()) {
+            NSLog("OK")
             success(db.items)
         }
     }
 
-    // TODO: Move to test or playground
+    // TODO: Move to test or playground.
     func test() {
         let raw = [
             "id": "123",
