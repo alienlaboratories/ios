@@ -13,8 +13,9 @@ import UIKit
 
 class ItemTypePickerViewController: UITableViewController {
 
+    // Sorted list of type IDs.
     var types: [String]!
-    
+
     var selectedIndex: Int? = nil
 
     // TODO: Better way to return optional.
@@ -28,16 +29,9 @@ class ItemTypePickerViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.types = [
-            "Person",
-            "Place",
-            "Org",
-            "Event",
-            "Task",
-            "Note"
-        ]
+        self.types = db.getTypes()
     }
-    
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -45,12 +39,13 @@ class ItemTypePickerViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return types.count
     }
-    
-    // Set initial decorators
+
+    // Get table data
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = types[indexPath.row]
-        
+        let type = self.types[indexPath.row]
+        cell.textLabel?.text = db.getTypeLabel(type)
+
         if indexPath.row == self.selectedIndex {
             cell.accessoryType = .Checkmark
         } else {

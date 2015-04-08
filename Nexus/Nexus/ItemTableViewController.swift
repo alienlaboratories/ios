@@ -56,16 +56,22 @@ class ItemTableViewController: UITableViewController {
     @IBAction func onSaveDetail(segue: UIStoryboardSegue) {
         let itemDetailViewController = segue.sourceViewController as ItemDetailViewController
 
-        // Update the data source
+        // Update the data source.
         let dataSource = self.tableView.dataSource as TableViewDataSourceAdapter
-        let item = itemDetailViewController.item
+        let mutation = itemDetailViewController.mutation
 
-        // Create new item
-        println("Save: \(item.id)")
-        if (item.id == nil) {
-            item.id = db.getId()
+        // Apply the mutation.
+        // TODO: Move to database.
+        println("Mutation: \(mutation.debug())")
+        var item: Item
+        if (mutation.id != nil) {
+            item = dataSource.getItem(mutation.id!)!
+        } else {
+            // Create new item.
+            item = Item(id: db.getId())
             dataSource.items.append(item)
         }
+        item.applyMutation(mutation)
 
         // Update the table view.
         self.tableView.reloadData()

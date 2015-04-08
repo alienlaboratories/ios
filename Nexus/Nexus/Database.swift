@@ -49,9 +49,9 @@ class Item: NSObject {
     
     var id: String?
     var type: String?
-    var title: String
-    
-    init(id: String?=nil, type: String?=nil, title: String="") {
+    var title: String?
+
+    init(id: String?=nil, type: String?=nil, title: String?=nil) {
         self.id = id
         self.type = type
         self.title = title
@@ -59,20 +59,48 @@ class Item: NSObject {
         super.init()
     }
 
-    func debug() -> String {
-        return "Item(ID:\(self.id), Type:\(self.type))"
+    func applyMutation(mutation: Item) {
+        if (mutation.type != nil) {
+            self.type = mutation.type
+        }
+        if (mutation.title != nil) {
+            self.title = mutation.title
+        }
     }
-    
+
+    func debug() -> String {
+        return "Item(id:\(self.id), type:\(self.type), title:\(self.title))"
+    }
+
 }
 
 class DB {
     
     var idmax = 0
+
     func getId() -> String {
-        idmax++
-        return "I\(idmax)"
+        self.idmax++
+        return "I\(self.idmax)"
     }
     
+    // TODO: Model types as items.
+    let types: [String:String] = [
+        "person":   "Person",
+        "place":    "Place",
+        "org":      "Org",
+        "event":    "Event",
+        "task":     "Task",
+        "note":     "Note"
+    ]
+
+    func getTypes() -> [String] {
+        return [String](self.types.keys)
+    }
+
+    func getTypeLabel(type: String) -> String {
+        return self.types[type]!
+    }
+
 }
 
 // TODO: Global
@@ -82,18 +110,18 @@ class QueryModel {
 
     // TODO(burdon): Load from file.
     let DATA = [
-        Item(id: db.getId(), title: "Amserterdam"),
-        Item(id: db.getId(), title: "Barcelona"),
-        Item(id: db.getId(), title: "Copenhagen"),
-        Item(id: db.getId(), title: "Hanoi"),
-        Item(id: db.getId(), title: "Hong Kong"),
-        Item(id: db.getId(), title: "London"),
-        Item(id: db.getId(), title: "Los Angeles"),
-        Item(id: db.getId(), title: "New York"),
-        Item(id: db.getId(), title: "Paris"),
-        Item(id: db.getId(), title: "Shanghai"),
-        Item(id: db.getId(), title: "Tokyo"),
-        Item(id: db.getId(), title: "Zurich"),
+        Item(id: db.getId(), type: "place", title: "Amserterdam"),
+        Item(id: db.getId(), type: "place", title: "Barcelona"),
+        Item(id: db.getId(), type: "place", title: "Copenhagen"),
+        Item(id: db.getId(), type: "place", title: "Hanoi"),
+        Item(id: db.getId(), type: "place", title: "Hong Kong"),
+        Item(id: db.getId(), type: "place", title: "London"),
+        Item(id: db.getId(), type: "place", title: "Los Angeles"),
+        Item(id: db.getId(), type: "place", title: "New York"),
+        Item(id: db.getId(), type: "place", title: "Paris"),
+        Item(id: db.getId(), type: "place", title: "Shanghai"),
+        Item(id: db.getId(), type: "place", title: "Tokyo"),
+        Item(id: db.getId(), type: "place", title: "Zurich"),
     ]
 
     // TODO(burdon): Return Result object.
@@ -118,6 +146,7 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
     let model = QueryModel()
     
     // TODO: replace with result object.
+    // TODO: create dictionary.
     var items = [Item]()
     
     func clear() {
@@ -128,6 +157,15 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
         self.items = self.model.getItems()
     }
     
+    func getItem(id: String) -> Item? {
+        for item in self.items {
+            if (item.id == id) {
+                return item
+            }
+        }
+        return nil
+    }
+
     // TOOD: Why is override not valid?
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

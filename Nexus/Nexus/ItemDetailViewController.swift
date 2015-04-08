@@ -10,8 +10,11 @@ import UIKit
 
 class ItemDetailViewController: UITableViewController {
     
-    // Currently selected item.
-    var item: Item!
+    // Currently selected (immutable) item.
+    var item: Item?
+    
+    // Mutation.
+    var mutation: Item!
 
     // Fields.
     @IBOutlet weak var titleTextField: UITextField!
@@ -23,13 +26,11 @@ class ItemDetailViewController: UITableViewController {
         // Update fields.
         self.titleTextField.text = self.item?.title
         if let type = self.item?.type {
-            self.typeLabel.text = type
+            self.typeLabel.text = db.getTypeLabel(type)
         }
 
         // Create placeholder item.
-        if (self.item == nil) {
-            self.item = Item()
-        }
+        self.mutation = Item(id: self.item?.id)
     }
 
     // Select textfield if click anywhere in cell.
@@ -42,9 +43,10 @@ class ItemDetailViewController: UITableViewController {
     // Detect save event.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveItem" {
-            // Update item.
-            self.item.title = self.titleTextField.text
-            self.item.type = self.typeLabel.text
+            // Update mutation.
+            if Util.changed(self.item?.title, v2: self.titleTextField.text) {
+                self.mutation.title = self.titleTextField.text
+            }
         }
     }
 
@@ -55,8 +57,10 @@ class ItemDetailViewController: UITableViewController {
     @IBAction func onSelectType(segue: UIStoryboardSegue) {
         let itemTypePickerViewController = segue.sourceViewController as ItemTypePickerViewController
         if let type = itemTypePickerViewController.getType() {
-            self.typeLabel.text = type
-            
+            // TODO: Factor out field updates above.
+            self.typeLabel.text = db.getTypeLabel(type)
+            self.mutation.type = type
+
             // Close pop-over.
             itemTypePickerViewController.dismissViewControllerAnimated(false, completion: nil)
         }
