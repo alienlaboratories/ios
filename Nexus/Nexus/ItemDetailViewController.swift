@@ -29,7 +29,7 @@ class ItemDetailViewController: UITableViewController {
             self.typeLabel.text = db.getTypeLabel(type)
         }
 
-        // Create placeholder item.
+        // Create mutation.
         self.mutation = Item(id: self.item?.id)
     }
 

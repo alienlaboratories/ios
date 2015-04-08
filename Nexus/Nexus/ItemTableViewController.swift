@@ -45,8 +45,9 @@ class ItemTableViewController: UITableViewController {
     }
 
     @IBAction func onRefreshButton(sender: AnyObject) {
-        self.tableViewDataSource.update()
-        self.tableView.reloadData()
+        self.tableViewDataSource.update(success: {
+            self.tableView.reloadData()
+        })
     }
     
     @IBAction func onCancelDetail(segue: UIStoryboardSegue) {

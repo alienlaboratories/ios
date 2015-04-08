@@ -13,6 +13,7 @@ class Util {
         if (v1 != nil) {
             return v1 != v2
         }
+
         return v2 != nil
     }
 

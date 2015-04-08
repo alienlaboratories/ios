@@ -17,34 +17,24 @@ import SwiftyJSON
 // - Display graph of items
 // - Display set of cards for items
 
-// TODO: Source control project
 
-// http://www.raywenderlich.com/75289/swift-tutorial-part-3-tuples-protocols-delegates-table-views
-
-// TODO: Table + Detail Segue: http://www.raywenderlich.com/81880/storyboards-tutorial-swift-part-2
 // TODO: Item object (from JSON)
-// TODO: Populate table view
-// TODO: Add item from segue
-// TODO: Pick type
-
-// TODO: Search: http://www.raywenderlich.com/76519/add-table-view-search-swift
 
 // TODO: Load data from JSON file: http://www.raywenderlich.com/82706/working-with-json-in-swift-tutorial
 // TODO: Post to server (actions)
 // TODO: Auth
 
-// TODO: Table with columns
-// TODO: Reuse rows (identifier)
-
+// http://www.raywenderlich.com/75289/swift-tutorial-part-3-tuples-protocols-delegates-table-views
+// TODO: Search: http://www.raywenderlich.com/76519/add-table-view-search-swift
 // TODO: labels
 // TODO: J2ObjC share Java database code
 // TODO: Search/Query/Result (local and remote)
 // TODO: OpenGL/Metal graph (with links)
 // TODO: Sidemenu
-// TODO: Navmenu
+// TODO: Pulldown menu (options)
+// TODO: Test tab
 
 
-// TODO: Replace with protocol buffer
 class Item: NSObject {
     
     var id: String?
@@ -74,6 +64,9 @@ class Item: NSObject {
 
 }
 
+/**
+ * Database singleton.
+ */
 class DB {
     
     var idmax = 0
@@ -83,14 +76,15 @@ class DB {
         return "I\(self.idmax)"
     }
     
-    // TODO: Model types as items.
+    // TODO: Model types as items?
     let types: [String:String] = [
         "person":   "Person",
-        "place":    "Place",
         "org":      "Org",
+        "place":    "Place",
         "event":    "Event",
         "task":     "Task",
-        "note":     "Note"
+        "message":  "Message",
+        "note":     "Note",
     ]
 
     func getTypes() -> [String] {
@@ -100,17 +94,10 @@ class DB {
     func getTypeLabel(type: String) -> String {
         return self.types[type]!
     }
-
-}
-
-// TODO: Global
-let db = DB()
-
-class QueryModel {
-
+    
     // TODO(burdon): Load from file.
-    let DATA = [
-        Item(id: db.getId(), type: "place", title: "Amserterdam"),
+    let items: [Item] = [
+        Item(id: db.getId(), type: "place", title: "Amsterdam"),
         Item(id: db.getId(), type: "place", title: "Barcelona"),
         Item(id: db.getId(), type: "place", title: "Copenhagen"),
         Item(id: db.getId(), type: "place", title: "Hanoi"),
@@ -124,20 +111,37 @@ class QueryModel {
         Item(id: db.getId(), type: "place", title: "Zurich"),
     ]
 
-    // TODO(burdon): Return Result object.
-    func getItems() -> [Item] {
-        return DATA
-    }
-    
-    func test() {
+}
 
-        let jsonObject = [
-            "name": "Test"
+// TODO: Global
+let db = DB()
+
+class QueryModel {
+
+    // Async query
+    // TODO: Return result object.
+    func query(#success: ([Item]) -> ()) {
+        var delta: Int64 = 500 * Int64(NSEC_PER_MSEC)
+        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+
+        dispatch_after(time, dispatch_get_main_queue()) {
+            success(db.items)
+        }
+    }
+
+    // TODO: Move to test or playground
+    func test() {
+        let raw = [
+            "id": "123",
+            "summary": [
+                "title": "Test"
+            ]
         ]
 
-        let json = JSON(jsonObject)
-    
+        let json = JSON(raw)
+        println(json)
     }
+
 }
 
 class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
@@ -153,10 +157,15 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
         self.items = []
     }
     
-    func update() {
-        self.items = self.model.getItems()
+    // Async update.
+    func update(#success: () -> ()) {
+        self.model.query(success: { (items: [Item]) -> () in
+                NSLog("Result: \(items.count)")
+                self.items = items
+                success()
+            })
     }
-    
+
     func getItem(id: String) -> Item? {
         for item in self.items {
             if (item.id == id) {
@@ -167,6 +176,7 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
     }
 
     // TOOD: Why is override not valid?
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -174,7 +184,7 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let item = self.items[indexPath.row] as Item
 
@@ -185,5 +195,5 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
 
         return cell
     }
-    
+
 }
