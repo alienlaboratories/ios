@@ -30,7 +30,8 @@ class ItemTableViewController: UITableViewController {
             let item = dataSource.items[row!]
 
             // Configure the detail scene.
-            let itemDetailViewController = segue.destinationViewController.topViewController as ItemDetailViewController
+            let itemDetailViewController =
+                segue.destinationViewController.topViewController as ItemDetailViewController
             itemDetailViewController.item = item
         }
     }
@@ -69,7 +70,7 @@ class ItemTableViewController: UITableViewController {
             item = dataSource.getItem(mutation.id!)!
         } else {
             // Create new item.
-            item = Item(id: db.getId())
+            item = Item(id: DB.getId())
             dataSource.items.append(item)
         }
         item.applyMutation(mutation)

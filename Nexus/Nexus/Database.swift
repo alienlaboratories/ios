@@ -17,7 +17,6 @@ import SwiftyJSON
 // - Display graph of items
 // - Display set of cards for items
 
-
 // TODO: Item object (from JSON)
 
 // TODO: Load data from JSON file: http://www.raywenderlich.com/82706/working-with-json-in-swift-tutorial
@@ -65,56 +64,63 @@ class Item: NSObject {
 }
 
 /**
- * Database singleton.
+ * Database singleton (class utility).
  */
 class DB {
-    
-    var idmax = 0
 
-    func getId() -> String {
-        self.idmax++
-        return "I\(self.idmax)"
+    private struct Internal {
+
+        static var idmax = 0
+
+        // TODO: Model types as items?
+        static let types: [String:String] = [
+            "person":   "Person",
+            "org":      "Org",
+            "place":    "Place",
+            "event":    "Event",
+            "task":     "Task",
+            "message":  "Message",
+            "note":     "Note",
+        ]
+
+        // TODO: Load from file.
+        static let items: [Item] = [
+            Item(id: DB.getId(), type: "place", title: "Amsterdam"),
+            Item(id: DB.getId(), type: "place", title: "Barcelona"),
+            Item(id: DB.getId(), type: "place", title: "Copenhagen"),
+            Item(id: DB.getId(), type: "place", title: "Hanoi"),
+            Item(id: DB.getId(), type: "place", title: "Hong Kong"),
+            Item(id: DB.getId(), type: "place", title: "London"),
+            Item(id: DB.getId(), type: "place", title: "Los Angeles"),
+            Item(id: DB.getId(), type: "place", title: "New York"),
+            Item(id: DB.getId(), type: "place", title: "Paris"),
+            Item(id: DB.getId(), type: "place", title: "Shanghai"),
+            Item(id: DB.getId(), type: "place", title: "Tokyo"),
+            Item(id: DB.getId(), type: "place", title: "Zurich"),
+        ]
+
+    }
+
+    // TODO: Replace with DB.getInstance().getId() (make mockable).
+
+    class func getId() -> String {
+        Internal.idmax++
+        return "I\(Internal.idmax)"
+    }
+
+    class func getItems() -> [Item] {
+        return Internal.items
     }
     
-    // TODO: Model types as items?
-    let types: [String:String] = [
-        "person":   "Person",
-        "org":      "Org",
-        "place":    "Place",
-        "event":    "Event",
-        "task":     "Task",
-        "message":  "Message",
-        "note":     "Note",
-    ]
-
-    func getTypes() -> [String] {
-        return [String](self.types.keys)
+    class func getTypes() -> [String] {
+        return [String](Internal.types.keys)
     }
 
-    func getTypeLabel(type: String) -> String {
-        return self.types[type]!
+    class func getTypeLabel(type: String) -> String {
+        return Internal.types[type]!
     }
-    
-    // TODO(burdon): Load from file.
-    let items: [Item] = [
-        Item(id: db.getId(), type: "place", title: "Amsterdam"),
-        Item(id: db.getId(), type: "place", title: "Barcelona"),
-        Item(id: db.getId(), type: "place", title: "Copenhagen"),
-        Item(id: db.getId(), type: "place", title: "Hanoi"),
-        Item(id: db.getId(), type: "place", title: "Hong Kong"),
-        Item(id: db.getId(), type: "place", title: "London"),
-        Item(id: db.getId(), type: "place", title: "Los Angeles"),
-        Item(id: db.getId(), type: "place", title: "New York"),
-        Item(id: db.getId(), type: "place", title: "Paris"),
-        Item(id: db.getId(), type: "place", title: "Shanghai"),
-        Item(id: db.getId(), type: "place", title: "Tokyo"),
-        Item(id: db.getId(), type: "place", title: "Zurich"),
-    ]
 
 }
-
-// TODO: Global
-let db = DB()
 
 class QueryModel {
 
@@ -126,8 +132,7 @@ class QueryModel {
 
         NSLog("Query...")
         dispatch_after(time, dispatch_get_main_queue()) {
-            NSLog("OK")
-            success(db.items)
+            success(DB.getItems())
         }
     }
 
@@ -168,12 +173,14 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
             })
     }
 
+    // Get item by ID from cache.
     func getItem(id: String) -> Item? {
         for item in self.items {
             if (item.id == id) {
                 return item
             }
         }
+
         return nil
     }
 

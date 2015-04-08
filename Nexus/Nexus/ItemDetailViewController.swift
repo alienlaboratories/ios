@@ -26,7 +26,7 @@ class ItemDetailViewController: UITableViewController {
         // Update fields.
         self.titleTextField.text = self.item?.title
         if let type = self.item?.type {
-            self.typeLabel.text = db.getTypeLabel(type)
+            self.typeLabel.text = DB.getTypeLabel(type)
         }
 
         // Create mutation.
@@ -58,7 +58,7 @@ class ItemDetailViewController: UITableViewController {
         let itemTypePickerViewController = segue.sourceViewController as ItemTypePickerViewController
         if let type = itemTypePickerViewController.getType() {
             // TODO: Factor out field updates above.
-            self.typeLabel.text = db.getTypeLabel(type)
+            self.typeLabel.text = DB.getTypeLabel(type)
             self.mutation.type = type
 
             // Close pop-over.

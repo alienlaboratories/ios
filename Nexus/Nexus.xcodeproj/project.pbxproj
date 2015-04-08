@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC046D801AD5000E002FE706 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		BC046D811AD5000E002FE706 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC31D93A1AD1F003007524C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31D9391AD1F003007524C1 /* AppDelegate.swift */; };
 		BC31D93C1AD1F003007524C1 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31D93B1AD1F003007524C1 /* ItemTableViewController.swift */; };
 		BC31D93F1AD1F003007524C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC31D93D1AD1F003007524C1 /* Main.storyboard */; };
@@ -18,6 +16,8 @@
 		BCCF43FA1AD2494600266884 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43F91AD2494600266884 /* Util.swift */; };
 		BCCF43FD1AD24B6900266884 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43FC1AD24B6900266884 /* Database.swift */; };
 		BCE5E9291AD44AE500758DAF /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5E9281AD44AE500758DAF /* ItemDetailViewController.swift */; };
+		BCF44B191AD50D7000649023 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */; };
+		BCF44B1A1AD50D7000649023 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCFA65371AD4A2710063806D /* ItemTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFA65361AD4A2710063806D /* ItemTypePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,13 +32,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BC5B9F6C1AD3729C0084806E /* Embed Frameworks */ = {
+		BCF44B1B1AD50D7000649023 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC046D811AD5000E002FE706 /* SwiftyJSON.framework in Embed Frameworks */,
+				BCF44B1A1AD50D7000649023 /* SwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC046D801AD5000E002FE706 /* SwiftyJSON.framework in Frameworks */,
+				BCF44B191AD50D7000649023 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +155,7 @@
 				BC31D9301AD1F003007524C1 /* Sources */,
 				BC31D9311AD1F003007524C1 /* Frameworks */,
 				BC31D9321AD1F003007524C1 /* Resources */,
-				BC5B9F6C1AD3729C0084806E /* Embed Frameworks */,
+				BCF44B1B1AD50D7000649023 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

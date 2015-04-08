@@ -29,7 +29,7 @@ class ItemTypePickerViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.types = db.getTypes()
+        self.types = DB.getTypes()
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -40,11 +40,11 @@ class ItemTypePickerViewController: UITableViewController {
         return types.count
     }
 
-    // Get table data
+    // Get table data.
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as UITableViewCell
         let type = self.types[indexPath.row]
-        cell.textLabel?.text = db.getTypeLabel(type)
+        cell.textLabel?.text = DB.getTypeLabel(type)
 
         if indexPath.row == self.selectedIndex {
             cell.accessoryType = .Checkmark
@@ -55,7 +55,7 @@ class ItemTypePickerViewController: UITableViewController {
         return cell
     }
 
-    // Update selection before exit
+    // Update selection before exit.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "TypeSelected" {
             let cell = sender as UITableViewCell
