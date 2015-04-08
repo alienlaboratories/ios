@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import SwiftyJSON
 
 // Spec:
@@ -34,7 +33,7 @@ import SwiftyJSON
 // TODO: Test tab
 
 
-class Item: NSObject {
+class Item: NSObject, Printable {
     
     var id: String?
     var type: String?
@@ -47,6 +46,14 @@ class Item: NSObject {
 
         super.init()
     }
+    
+    override var description: String {
+        return debug()
+    }
+    
+    func debug() -> String {
+        return "Item(id:\(self.id), type:\(self.type), title:\(self.title))"
+    }
 
     func applyMutation(mutation: Item) {
         if (mutation.type != nil) {
@@ -57,16 +64,20 @@ class Item: NSObject {
         }
     }
 
-    func debug() -> String {
-        return "Item(id:\(self.id), type:\(self.type), title:\(self.title))"
-    }
-
 }
 
 /**
  * Database singleton (class utility).
  */
 class DB {
+
+    struct Test {
+        
+        static let DATA_FILE = NSBundle.mainBundle().pathForResource("test", ofType: "json")!
+        
+        static let DATA_URL = "https://itunes.apple.com/us/rss/topgrossingipadapplications/limit=25/json"
+        
+    }
 
     private struct Internal {
 
@@ -126,7 +137,7 @@ class QueryModel {
 
     // Async query
     // TODO: Return result object.
-    func query(#success: ([Item]) -> ()) {
+    func query(#success: ([Item]) -> Void) {
         var delta: Int64 = 500 * Int64(NSEC_PER_MSEC)
         var time = dispatch_time(DISPATCH_TIME_NOW, delta)
 
@@ -134,75 +145,6 @@ class QueryModel {
         dispatch_after(time, dispatch_get_main_queue()) {
             success(DB.getItems())
         }
-    }
-
-    // TODO: Move to test or playground.
-    func test() {
-        let raw = [
-            "id": "123",
-            "summary": [
-                "title": "Test"
-            ]
-        ]
-
-        let json = JSON(raw)
-        println(json)
-    }
-
-}
-
-class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
-    
-    // TODO: Pass in.
-    let model = QueryModel()
-    
-    // TODO: replace with result object.
-    // TODO: create dictionary.
-    var items = [Item]()
-    
-    func clear() {
-        self.items = []
-    }
-    
-    // Async update.
-    func update(#success: () -> ()) {
-        self.model.query(success: { (items: [Item]) -> () in
-                NSLog("Result: \(items.count)")
-                self.items = items
-                success()
-            })
-    }
-
-    // Get item by ID from cache.
-    func getItem(id: String) -> Item? {
-        for item in self.items {
-            if (item.id == id) {
-                return item
-            }
-        }
-
-        return nil
-    }
-
-    // TOOD: Why is override not valid?
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
-    }
-
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let item = self.items[indexPath.row] as Item
-
-        // Reuse named cells.
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ItemCell") as UITableViewCell
-        cell.textLabel?.text = item.title
-        cell.detailTextLabel?.text = item.debug()
-
-        return cell
     }
 
 }

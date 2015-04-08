@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import SwiftyJSON
 
 class NexusTests: XCTestCase {
     
@@ -28,6 +29,23 @@ class NexusTests: XCTestCase {
     func testPerformanceExample() {
         self.measureBlock() {
         }
+    }
+    
+    // http://www.raywenderlich.com/82706/working-with-json-in-swift-tutorial
+    func testJson() {
+        let raw = [
+            "id": "123",
+            "summary": [
+                "title": "Test"
+            ]
+        ]
+        
+        let json = JSON(raw)
+        
+        let title = json["summary"]["title"]
+        XCTAssert(title == "Test")
+
+        println(json)
     }
     
 }
