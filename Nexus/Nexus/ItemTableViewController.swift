@@ -49,11 +49,11 @@ class ItemTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    @IBAction func cancelDetail(segue: UIStoryboardSegue) {
-        // No-op
+    @IBAction func onCancelDetail(segue: UIStoryboardSegue) {
+        // No-op.
     }
-    
-    @IBAction func saveDetail(segue: UIStoryboardSegue) {
+
+    @IBAction func onSaveDetail(segue: UIStoryboardSegue) {
         let itemDetailViewController = segue.sourceViewController as ItemDetailViewController
 
         // Update the data source
@@ -61,6 +61,7 @@ class ItemTableViewController: UITableViewController {
         let item = itemDetailViewController.item
 
         // Create new item
+        println("Save: \(item.id)")
         if (item.id == nil) {
             item.id = db.getId()
             dataSource.items.append(item)

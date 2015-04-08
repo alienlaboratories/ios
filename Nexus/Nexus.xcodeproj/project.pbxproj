@@ -18,6 +18,7 @@
 		BCCF43FA1AD2494600266884 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43F91AD2494600266884 /* Util.swift */; };
 		BCCF43FD1AD24B6900266884 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43FC1AD24B6900266884 /* Database.swift */; };
 		BCE5E9291AD44AE500758DAF /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5E9281AD44AE500758DAF /* ItemDetailViewController.swift */; };
+		BCFA65371AD4A2710063806D /* ItemTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFA65361AD4A2710063806D /* ItemTypePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		BCCF43FC1AD24B6900266884 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		BCE1A3F71AD36F3D007BADFF /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		BCE5E9281AD44AE500758DAF /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		BCFA65361AD4A2710063806D /* ItemTypePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTypePickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +106,9 @@
 			children = (
 				BCCF43FC1AD24B6900266884 /* Database.swift */,
 				BC31D9391AD1F003007524C1 /* AppDelegate.swift */,
-				BCE5E9281AD44AE500758DAF /* ItemDetailViewController.swift */,
 				BC31D93B1AD1F003007524C1 /* ItemTableViewController.swift */,
+				BCE5E9281AD44AE500758DAF /* ItemDetailViewController.swift */,
+				BCFA65361AD4A2710063806D /* ItemTypePickerViewController.swift */,
 				BCCF43F91AD2494600266884 /* Util.swift */,
 				BC31D93D1AD1F003007524C1 /* Main.storyboard */,
 				BC31D9401AD1F003007524C1 /* Images.xcassets */,
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCE5E9291AD44AE500758DAF /* ItemDetailViewController.swift in Sources */,
+				BCFA65371AD4A2710063806D /* ItemTypePickerViewController.swift in Sources */,
 				BC31D93C1AD1F003007524C1 /* ItemTableViewController.swift in Sources */,
 				BC31D93A1AD1F003007524C1 /* AppDelegate.swift in Sources */,
 				BCCF43FA1AD2494600266884 /* Util.swift in Sources */,

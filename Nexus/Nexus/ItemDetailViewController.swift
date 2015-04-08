@@ -10,35 +10,55 @@ import UIKit
 
 class ItemDetailViewController: UITableViewController {
     
+    // Currently selected item.
+    var item: Item!
+
+    // Fields.
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var detailLabel: UILabel!
-    
-    var item:Item!
+    @IBOutlet weak var typeLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleTextField.text = self.item?.title
+
+        // Update fields.
+        self.titleTextField.text = self.item?.title
+        if let type = self.item?.type {
+            self.typeLabel.text = type
+        }
+
+        // Create placeholder item.
+        if (self.item == nil) {
+            self.item = Item()
+        }
     }
 
     // Select textfield if click anywhere in cell.
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            titleTextField.becomeFirstResponder()
+            self.titleTextField.becomeFirstResponder()
         }
     }
 
     // Detect save event.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveItem" {
-            if (self.item != nil) {
-                // Update existing item.
-                self.item.title = self.titleTextField.text
-            } else {
-                // Create new item.
-                self.item = Item(title: self.titleTextField.text)
-            }
+            // Update item.
+            self.item.title = self.titleTextField.text
+            self.item.type = self.typeLabel.text
         }
     }
 
+    //
+    // Events
+    //
+
+    @IBAction func onSelectType(segue: UIStoryboardSegue) {
+        let itemTypePickerViewController = segue.sourceViewController as ItemTypePickerViewController
+        if let type = itemTypePickerViewController.getType() {
+            self.typeLabel.text = type
+            
+            // Close pop-over.
+            itemTypePickerViewController.dismissViewControllerAnimated(false, completion: nil)
+        }
+    }
 }

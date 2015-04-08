@@ -48,17 +48,19 @@ import SwiftyJSON
 class Item: NSObject {
     
     var id: String?
+    var type: String?
     var title: String
     
-    init(id: String?=nil, title: String) {
+    init(id: String?=nil, type: String?=nil, title: String="") {
         self.id = id
+        self.type = type
         self.title = title
 
         super.init()
     }
 
     func debug() -> String {
-        return "Item(\(self.id))"
+        return "Item(ID:\(self.id), Type:\(self.type))"
     }
     
 }
