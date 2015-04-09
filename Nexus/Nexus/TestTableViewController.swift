@@ -17,7 +17,9 @@ class TestTableViewController: UITableViewController {
         JsonFileLoader(filePath: DB.Test.DATA_FILE).load({ (data: JSON?, error: Int?) -> Void in
             if (data != nil) {
                 println(data)
-                let title = data!["summary"]["title"].stringValue
+                let item = data!["item"][0]
+                println(item)
+                let title = item["summary"]["title"].stringValue
                 NSLog("Title: \(title)")
 
                 // TODO: Must update UI on main thread (not closure).

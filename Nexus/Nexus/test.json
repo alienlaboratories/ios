@@ -1,6 +1,9 @@
 {
-    "id": "123",
-    "summary": {
-        "title": "Test"
-    }
+    "item" : [
+        "id": "I-1",
+        "type": "place"
+        "summary": {
+              "title": "Amsterdam"
+        }
+    ]
 }

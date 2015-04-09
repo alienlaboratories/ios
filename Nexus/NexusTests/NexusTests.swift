@@ -47,5 +47,11 @@ class NexusTests: XCTestCase {
 
         println(json)
     }
+
+    func testItemUtil() {
+        var item = ItemUtil.create(id: "124", type: "org", summary: JSON(["title": "AlienLabs"]))
+        println(item)
+        //XCTAssert("AlienLabs" == item["summary"]["title"])
+    }
     
 }

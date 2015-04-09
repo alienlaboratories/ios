@@ -66,6 +66,33 @@ class Item: NSObject, Printable {
 
 }
 
+public class ItemUtil {
+
+    // https://github.com/SwiftyJSON/SwiftyJSON
+    
+    private init() {}
+    
+    // TODO: Create builder?
+    class func create(id: String?=nil, type: String?=nil, summary: JSON?=nil) -> JSON {
+        var json:JSON = []
+        
+        if (id != nil) {
+            json["id"].stringValue = id!
+        }
+
+        if (type != nil) {
+            json["type"].stringValue = type!
+        }
+
+        if (summary != nil) {
+            json["summary"] = summary!
+        }
+
+        return json
+    }
+    
+}
+
 /**
  * Database singleton (class utility).
  */
@@ -94,6 +121,10 @@ class DB {
             "note":     "Note",
         ]
 
+        static let json: [JSON] = [
+            ItemUtil.create(id: DB.getId(), type: "place", summary: JSON(["title": "Amsterdam"]))
+        ]
+
         // TODO: Load from file.
         static let items: [Item] = [
             Item(id: DB.getId(), type: "place", title: "Amsterdam"),
@@ -113,14 +144,10 @@ class DB {
     }
 
     // TODO: Replace with DB.getInstance().getId() (make mockable).
-
+    
     class func getId() -> String {
         Internal.idmax++
         return "I\(Internal.idmax)"
-    }
-
-    class func getItems() -> [Item] {
-        return Internal.items
     }
     
     class func getTypes() -> [String] {
@@ -129,6 +156,10 @@ class DB {
 
     class func getTypeLabel(type: String) -> String {
         return Internal.types[type]!
+    }
+    
+    class func getItems() -> [Item] {
+        return Internal.items
     }
 
 }

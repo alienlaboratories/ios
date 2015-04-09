@@ -13,6 +13,7 @@
 		BC31D9411AD1F003007524C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC31D9401AD1F003007524C1 /* Images.xcassets */; };
 		BC31D9441AD1F003007524C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC31D9421AD1F003007524C1 /* LaunchScreen.xib */; };
 		BC31D9501AD1F003007524C1 /* NexusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31D94F1AD1F003007524C1 /* NexusTests.swift */; };
+		BC3FC5471AD6269D00A85194 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43FC1AD24B6900266884 /* Database.swift */; };
 		BC6B81411AD59E29005C8E9D /* TableViewDataSourceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6B81401AD59E29005C8E9D /* TableViewDataSourceAdapter.swift */; };
 		BC6B81431AD5B056005C8E9D /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6B81421AD5B056005C8E9D /* TestTableViewController.swift */; };
 		BC6B81451AD5B2E0005C8E9D /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = BC6B81441AD5B2E0005C8E9D /* test.json */; };
@@ -199,6 +200,7 @@
 		BC31D92C1AD1F003007524C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = NX;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Alien Laboratories";
 				TargetAttributes = {
@@ -272,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC3FC5471AD6269D00A85194 /* Database.swift in Sources */,
 				BC31D9501AD1F003007524C1 /* NexusTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
