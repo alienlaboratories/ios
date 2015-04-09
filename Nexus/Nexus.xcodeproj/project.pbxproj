@@ -17,11 +17,11 @@
 		BC6B81411AD59E29005C8E9D /* TableViewDataSourceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6B81401AD59E29005C8E9D /* TableViewDataSourceAdapter.swift */; };
 		BC6B81431AD5B056005C8E9D /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6B81421AD5B056005C8E9D /* TestTableViewController.swift */; };
 		BC6B81451AD5B2E0005C8E9D /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = BC6B81441AD5B2E0005C8E9D /* test.json */; };
+		BCACFB6E1AD72FFA00A6783A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCD076F41AD703770042B2D5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCCF43FA1AD2494600266884 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43F91AD2494600266884 /* Util.swift */; };
 		BCCF43FD1AD24B6900266884 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43FC1AD24B6900266884 /* Database.swift */; };
+		BCD076F81AD723640042B2D5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD076F41AD703770042B2D5 /* SwiftyJSON.framework */; };
 		BCE5E9291AD44AE500758DAF /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5E9281AD44AE500758DAF /* ItemDetailViewController.swift */; };
-		BCF44B191AD50D7000649023 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */; };
-		BCF44B1A1AD50D7000649023 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCFA65371AD4A2710063806D /* ItemTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFA65361AD4A2710063806D /* ItemTypePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,13 +36,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BCF44B1B1AD50D7000649023 /* Embed Frameworks */ = {
+		BCACFB6F1AD72FFA00A6783A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BCF44B1A1AD50D7000649023 /* SwiftyJSON.framework in Embed Frameworks */,
+				BCACFB6E1AD72FFA00A6783A /* SwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		BC046D7D1AD4FD13002FE706 /* Database.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Database.playground; path = Playground/Database.playground; sourceTree = SOURCE_ROOT; };
-		BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		BC31D9341AD1F003007524C1 /* Nexus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nexus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC31D9381AD1F003007524C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC31D9391AD1F003007524C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		BC6B81441AD5B2E0005C8E9D /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		BCCF43F91AD2494600266884 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		BCCF43FC1AD24B6900266884 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		BCD076F41AD703770042B2D5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		BCE5E9281AD44AE500758DAF /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		BCFA65361AD4A2710063806D /* ItemTypePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTypePickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF44B191AD50D7000649023 /* SwiftyJSON.framework in Frameworks */,
+				BCD076F81AD723640042B2D5 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 		BC31D92B1AD1F003007524C1 = {
 			isa = PBXGroup;
 			children = (
-				BC046D7E1AD4FFF5002FE706 /* SwiftyJSON.framework */,
+				BCD076F41AD703770042B2D5 /* SwiftyJSON.framework */,
 				BC046D7D1AD4FD13002FE706 /* Database.playground */,
 				BC31D9361AD1F003007524C1 /* Nexus */,
 				BC31D94C1AD1F003007524C1 /* NexusTests */,
@@ -165,7 +165,7 @@
 				BC31D9301AD1F003007524C1 /* Sources */,
 				BC31D9311AD1F003007524C1 /* Frameworks */,
 				BC31D9321AD1F003007524C1 /* Resources */,
-				BCF44B1B1AD50D7000649023 /* Embed Frameworks */,
+				BCACFB6F1AD72FFA00A6783A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -326,6 +326,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rich Burdon (6VR47JH9DS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -346,6 +347,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -369,6 +371,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rich Burdon (6VR47JH9DS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -382,6 +385,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -397,6 +401,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					/Users/burdon/projects/src/alienlaboratories/ios/Carthage/Build/iOS,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Nexus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -414,6 +420,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					/Users/burdon/projects/src/alienlaboratories/ios/Carthage/Build/iOS,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Nexus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -430,6 +438,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					/Users/burdon/projects/src/alienlaboratories/ios/Carthage/Build/iOS,
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -450,6 +459,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					/Users/burdon/projects/src/alienlaboratories/ios/Carthage/Build/iOS,
 				);
 				INFOPLIST_FILE = NexusTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -38,7 +38,7 @@ class Item: NSObject, Printable {
     var id: String?
     var type: String?
     var title: String?
-
+    
     init(id: String?=nil, type: String?=nil, title: String?=nil) {
         self.id = id
         self.type = type
