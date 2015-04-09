@@ -32,6 +32,7 @@ class NexusTests: XCTestCase {
     }
     
     // http://www.raywenderlich.com/82706/working-with-json-in-swift-tutorial
+    
     func testJson() {
         let raw = [
             "id": "123",
@@ -39,19 +40,15 @@ class NexusTests: XCTestCase {
                 "title": "Test"
             ]
         ]
-        
+
         let json = JSON(raw)
-        
         let title = json["summary"]["title"]
         XCTAssert(title == "Test")
-
-        println(json)
     }
 
     func testItemUtil() {
-        var item = ItemUtil.create(id: "124", type: "org", summary: JSON(["title": "AlienLabs"]))
-        println(item)
-        //XCTAssert("AlienLabs" == item["summary"]["title"])
+        var item = ItemUtil.create(meta: JSON(["id": "124", "type": "org"]), summary: JSON(["title": "AlienLabs"]))
+        XCTAssert("AlienLabs" == item["summary"]["title"])
     }
     
 }

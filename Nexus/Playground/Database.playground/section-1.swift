@@ -18,3 +18,7 @@ func test(v: String?) {
 
 test("Hello")
 test(nil)
+
+var ts = Int64(NSDate().timeIntervalSince1970 * 1000)
+String(mach_absolute_time())
+String(mach_absolute_time())

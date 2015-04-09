@@ -73,15 +73,14 @@ public class ItemUtil {
     private init() {}
     
     // TODO: Create builder?
-    class func create(id: String?=nil, type: String?=nil, summary: JSON?=nil) -> JSON {
-        var json:JSON = []
-        
-        if (id != nil) {
-            json["id"].stringValue = id!
-        }
-
-        if (type != nil) {
-            json["type"].stringValue = type!
+    class func create(meta: JSON?=nil, summary: JSON?=nil) -> JSON {
+        var ts = String(mach_absolute_time())
+        var json:JSON
+        if (meta != nil) {
+            json = meta!
+            json["modified"].stringValue = ts
+        } else {
+            json = JSON(["modified": ts])
         }
 
         if (summary != nil) {
@@ -122,7 +121,7 @@ class DB {
         ]
 
         static let json: [JSON] = [
-            ItemUtil.create(id: DB.getId(), type: "place", summary: JSON(["title": "Amsterdam"]))
+            ItemUtil.create(meta: JSON(["id": DB.getId(), "type": "place"]), summary: JSON(["title": "Amsterdam"]))
         ]
 
         // TODO: Load from file.
