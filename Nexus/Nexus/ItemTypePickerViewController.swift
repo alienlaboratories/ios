@@ -42,7 +42,7 @@ class ItemTypePickerViewController: UITableViewController {
 
     // Get table data.
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as! UITableViewCell
         let type = self.types[indexPath.row]
         cell.textLabel?.text = DB.getTypeLabel(type)
 
@@ -58,7 +58,7 @@ class ItemTypePickerViewController: UITableViewController {
     // Update selection before exit.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "TypeSelected" {
-            let cell = sender as UITableViewCell
+            let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
             self.selectedIndex = indexPath?.row
         }

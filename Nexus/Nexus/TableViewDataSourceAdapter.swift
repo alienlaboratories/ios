@@ -55,7 +55,7 @@ class TableViewDataSourceAdapter: NSObject, UITableViewDataSource {
         let item = self.items[indexPath.row] as Item
         
         // Reuse named cells.
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ItemCell") as UITableViewCell
+        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ItemCell") as! UITableViewCell
         cell.textLabel?.text = item.title
         cell.detailTextLabel?.text = item.debug()
         

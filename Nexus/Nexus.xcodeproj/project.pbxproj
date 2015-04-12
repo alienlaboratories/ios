@@ -14,6 +14,7 @@
 		BC31D9441AD1F003007524C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC31D9421AD1F003007524C1 /* LaunchScreen.xib */; };
 		BC31D9501AD1F003007524C1 /* NexusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31D94F1AD1F003007524C1 /* NexusTests.swift */; };
 		BC3FC5471AD6269D00A85194 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF43FC1AD24B6900266884 /* Database.swift */; };
+		BC5BCD341AD73EED0063738D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCD331AD73EED0063738D /* Card.swift */; };
 		BC6B81411AD59E29005C8E9D /* TableViewDataSourceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6B81401AD59E29005C8E9D /* TableViewDataSourceAdapter.swift */; };
 		BC6B81431AD5B056005C8E9D /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6B81421AD5B056005C8E9D /* TestTableViewController.swift */; };
 		BC6B81451AD5B2E0005C8E9D /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = BC6B81441AD5B2E0005C8E9D /* test.json */; };
@@ -61,6 +62,7 @@
 		BC31D9491AD1F003007524C1 /* NexusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NexusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC31D94E1AD1F003007524C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC31D94F1AD1F003007524C1 /* NexusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NexusTests.swift; sourceTree = "<group>"; };
+		BC5BCD331AD73EED0063738D /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		BC6B81401AD59E29005C8E9D /* TableViewDataSourceAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceAdapter.swift; sourceTree = "<group>"; };
 		BC6B81421AD5B056005C8E9D /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		BC6B81441AD5B2E0005C8E9D /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				BC31D9421AD1F003007524C1 /* LaunchScreen.xib */,
 				BC31D9371AD1F003007524C1 /* Supporting Files */,
 				BC6B81441AD5B2E0005C8E9D /* test.json */,
+				BC5BCD331AD73EED0063738D /* Card.swift */,
 			);
 			path = Nexus;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCE5E9291AD44AE500758DAF /* ItemDetailViewController.swift in Sources */,
+				BC5BCD341AD73EED0063738D /* Card.swift in Sources */,
 				BCFA65371AD4A2710063806D /* ItemTypePickerViewController.swift in Sources */,
 				BC6B81431AD5B056005C8E9D /* TestTableViewController.swift in Sources */,
 				BC31D93C1AD1F003007524C1 /* ItemTableViewController.swift in Sources */,

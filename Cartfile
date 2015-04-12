@@ -1,5 +1,7 @@
 # SwifyJSON
-github "SwiftyJSON/SwiftyJSON" >= 2.1.2
+# github "SwiftyJSON/SwiftyJSON" >= 2.1.2
+# NOTE: XCode 6.3 language changes not backwards compatible.
+github "SwiftyJSON/SwiftyJSON" "xcode6.3"
 
 # Alamofire (HTTP network)
 # github "Alamofire/Alamofire" >= 1.1

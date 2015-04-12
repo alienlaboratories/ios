@@ -26,12 +26,12 @@ class ItemTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "EditItem") {
             let row = self.tableView.indexPathForSelectedRow()?.row
-            let dataSource = self.tableView.dataSource as TableViewDataSourceAdapter
+            let dataSource = self.tableView.dataSource as! TableViewDataSourceAdapter
             let item = dataSource.items[row!]
 
             // Configure the detail scene.
             let itemDetailViewController =
-                segue.destinationViewController.topViewController as ItemDetailViewController
+                segue.destinationViewController.topViewController as! ItemDetailViewController
             itemDetailViewController.item = item
         }
     }
@@ -56,10 +56,10 @@ class ItemTableViewController: UITableViewController {
     }
 
     @IBAction func onSaveDetail(segue: UIStoryboardSegue) {
-        let itemDetailViewController = segue.sourceViewController as ItemDetailViewController
+        let itemDetailViewController = segue.sourceViewController as! ItemDetailViewController
 
         // Update the data source.
-        let dataSource = self.tableView.dataSource as TableViewDataSourceAdapter
+        let dataSource = self.tableView.dataSource as! TableViewDataSourceAdapter
         let mutation = itemDetailViewController.mutation
 
         // Apply the mutation.

@@ -55,7 +55,7 @@ class ItemDetailViewController: UITableViewController {
     //
 
     @IBAction func onSelectType(segue: UIStoryboardSegue) {
-        let itemTypePickerViewController = segue.sourceViewController as ItemTypePickerViewController
+        let itemTypePickerViewController = segue.sourceViewController as! ItemTypePickerViewController
         if let type = itemTypePickerViewController.getType() {
             // TODO: Factor out field updates above.
             self.typeLabel.text = DB.getTypeLabel(type)
